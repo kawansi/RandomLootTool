@@ -20,9 +20,9 @@ The tool sort and filter blocks mined, creatures killed and items picked up in a
 Previous Minecraft versions (1.12.2+) will work with partial support (icons used will be from 1.19.2 and blocks are listed despite not existing in this version).
 
 ## Installation
-No installation is done, unpack the ZIP anywhere and run the .exe file.
+No installation is needed, unpack the ZIP retrieved from [Release](https://github.com/kawansi/RandomLootTool/releases) page anywhere and run the .exe file.
 
-It does not save any files, it only read statistics of the save created by Minecraft.
+The tool does not save any files, it only read statistics of the save created by Minecraft.
 
 ## Feedback
 Have any feedback or found a bug? Open an [issue](https://github.com/kawansi/RandomLootTool/issues) and I will answer as soon as possible.
