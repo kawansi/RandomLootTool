@@ -1,0 +1,129 @@
+﻿<Window x:Class="RandomVisualizerWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RandomVisualizerWPF"
+        mc:Ignorable="d"
+        Title="Random Loot Tool" Height="700" Width="1000"
+        Icon="Assets\UI\ender_eye.ico" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="2"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" VerticalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="2"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" x:Name="HeaderPanel">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF79FBFB"/>
+                            <GradientStop Color="#FFB4FBFB" Offset="0.2"/>
+                            <GradientStop Color="#FFE8FBFB" Offset="1"/>
+                        </LinearGradientBrush>
+                    </StackPanel.Background>
+                    <Label Content="Random Loot Tool v0.1" HorizontalAlignment="Left" Margin="4,4,0,0" VerticalAlignment="Top" FontSize="13" FontWeight="Bold"/>
+                    <Label Content="Save:" HorizontalAlignment="Left" Margin="30,5,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <TextBox x:Name="SaveFileText" TextWrapping="Wrap" Text="" Width="200" Height="20" Margin="0,9,0,0" VerticalAlignment="Top" FontSize="13" IsReadOnly="True"/>
+                    <Button x:Name="BrowseSaveFileButton" Content="Browse..." Width="60" Height="20" Margin="8,9,0,0" VerticalAlignment="Top"/>
+                    <Image Width="24" Source="Assets\UI\question_mark.png" Margin="8,7,0,0" ToolTipService.InitialShowDelay="50" ToolTipService.BetweenShowDelay="100" ToolTipService.HasDropShadow="True" VerticalAlignment="Top">
+                        <Image.ToolTip>
+                            <ToolTip Content="Select your save folder (located in %APPDATA%\.minecraft\saves by default)" />
+                        </Image.ToolTip>
+                    </Image>
+
+                </StackPanel>
+            </Grid>
+            <GridSplitter Grid.Row="1" ResizeDirection="Rows" Height="2" Background="DarkSlateGray" HorizontalAlignment="Stretch" ResizeBehavior="PreviousAndNext"/>
+            <Grid Grid.Row="2" x:Name="SettingsPanel" VerticalAlignment="Stretch">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Stretch" Background="#FFE8FBFB">
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Margin="4,0,0,0">
+                        <Label Content="Type filter" HorizontalAlignment="Center" Margin="2,0,2,0" VerticalAlignment="Bottom" FontWeight="Bold" FontFamily="Miriam Libre" FontSize="13"/>
+                        <CheckBox x:Name="TypeFilterBlocks" Content="Blocks" FontFamily="Miriam Libre" FontSize="13" Margin="3,4,3,0" />
+                        <CheckBox x:Name="TypeFilterMonsters" Content="Monsters" FontFamily="Miriam Libre" FontSize="13" Margin="3,4,3,0" />
+                    </StackPanel>
+                    <GridSplitter ResizeDirection="Columns" Width="1" Background="DarkSlateGray" VerticalAlignment="Stretch" Margin="9,0,9,0" IsEnabled="False"/>
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Margin="0,0,0,0">
+                        <Label Content="Count filter" HorizontalAlignment="Center" Margin="2,0,2,0" VerticalAlignment="Bottom" FontWeight="Bold" FontFamily="Miriam Libre" FontSize="13"/>
+                        <RadioButton x:Name="CountFilterAll" Content="All" FontFamily="Miriam Libre" FontSize="13" Margin="3,4,0,0" />
+                        <RadioButton x:Name="CountFilter0" Content="0" FontFamily="Miriam Libre" FontSize="13" Margin="3,4,0,0" />
+                        <RadioButton x:Name="CountFilter01" Content="0-1" FontFamily="Miriam Libre" FontSize="13" Margin="3,4,0,0" />
+                        <RadioButton x:Name="CountFilter1" Content="1" FontFamily="Miriam Libre" FontSize="13" Margin="3,4,0,0" />
+                        <RadioButton x:Name="CountFilter1more" Content="1+" FontFamily="Miriam Libre" FontSize="13" Margin="3,4,0,4" />
+                    </StackPanel>
+                    <GridSplitter ResizeDirection="Columns" Width="1" Background="DarkSlateGray" VerticalAlignment="Stretch" Margin="9,0,9,0" IsEnabled="False"/>
+                    <StackPanel Orientation="Vertical">
+                        <Label Content="Stat view" HorizontalAlignment="Center" Margin="2,0,2,0" VerticalAlignment="Bottom" FontWeight="Bold" FontFamily="Miriam Libre" FontSize="13"/>
+                        <StackPanel Orientation="Vertical" Margin="0,0,0,0">
+                            <RadioButton x:Name="StatViewMined" Content="Blocks mined / Monsters killed" FontFamily="Miriam Libre" FontSize="13" Margin="3,4,0,0" />
+                            <RadioButton x:Name="StatViewPicked" Content="Blocks picked up" FontFamily="Miriam Libre" FontSize="13" Margin="3,4,3,0" />
+                        </StackPanel>
+                    </StackPanel>
+                    <GridSplitter ResizeDirection="Columns" Width="1" Background="DarkSlateGray" VerticalAlignment="Stretch" Margin="9,0,9,0" IsEnabled="False"/>
+                    <StackPanel Orientation="Vertical">
+                        <Label Content="Misc settings" HorizontalAlignment="Center" Margin="2,0,2,0" VerticalAlignment="Bottom" FontWeight="Bold" FontFamily="Miriam Libre" FontSize="13"/>
+                        <StackPanel Orientation="Vertical" Margin="0,0,0,3">
+                            <CheckBox x:Name="ColoredBackground" Content="Colored background" FontFamily="Miriam Libre" FontSize="13" Margin="3,4,3,0"/>
+                            <CheckBox x:Name="MiscShowHidden" Content="Show hidden items" FontFamily="Miriam Libre" FontSize="13" Margin="3,4,3,0" Visibility="Hidden"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <GridSplitter ResizeDirection="Columns" Width="1" Background="DarkSlateGray" VerticalAlignment="Stretch" Margin="9,0,9,0" IsEnabled="False"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+        <GridSplitter Grid.Row="1" ResizeDirection="Rows" Height="2" Background="DarkSlateGray" HorizontalAlignment="Stretch" ResizeBehavior="PreviousAndNext"/>
+        <Grid Grid.Row="2" VerticalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="1"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" >
+                <Grid Background="#FFE8FBFB">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="130"/>
+                        <ColumnDefinition Width="24"/>
+                        <ColumnDefinition Width="60"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="32"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="40"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Item / Monster" FontFamily="Miriam Libre" FontSize="13" VerticalAlignment="Center" Margin="20,0,0,0" FontWeight="Bold"/>
+                    <Border x:Name="ItemButtonBorder" Grid.Column="1" Width="20" Height="22" BorderThickness="1,1,1,1" BorderBrush="Black" VerticalAlignment="Center" CornerRadius="2,2,2,2">
+                        <Button x:Name="ItemSortButton" Width="18" Height="20" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
+                            <Image x:Name="ItemSortImage" Width="16" Height="16" Source="Assets\UI\arrow_down.png" Margin="0,0,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5"/>
+                        </Button>
+                    </Border>
+                    <TextBox Grid.Column="3" x:Name="WordFilter" Text="" FontFamily="Miriam Libre" FontSize="15" Width="300" Height="26" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+                    <Image Grid.Column="4" Width="24" Source="Assets\UI\question_mark.png" Margin="0,0,0,0" ToolTipService.InitialShowDelay="50" ToolTipService.BetweenShowDelay="100" ToolTipService.HasDropShadow="True">
+                        <Image.ToolTip>
+                            <ToolTip Content="Filter items that contain the text" />
+                        </Image.ToolTip>
+                    </Image>
+                    <Label Grid.Column="5" Content="Count" FontFamily="Miriam Libre" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,00,0" FontWeight="Bold"/>
+                    <Border x:Name="CountButtonBorder" Grid.Column="6" Width="20" Height="22" BorderThickness="1,1,1,1" BorderBrush="Black" VerticalAlignment="Center" CornerRadius="2,2,2,2">
+                        <Button x:Name="CountSortButton" Width="18" Height="20" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
+                            <Image x:Name="CountSortImage"  Width="16" Height="16" Source="Assets\UI\arrow_down.png" Margin="0,0,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5"/>
+                        </Button>
+                    </Border>
+                </Grid>
+            </Grid>
+            <GridSplitter Grid.Row="1" ResizeDirection="Rows" Height="1" Background="DarkSlateGray" HorizontalAlignment="Stretch" ResizeBehavior="PreviousAndNext" IsEnabled="False"/>
+            <ScrollViewer x:Name="ItemScrollPanel" Grid.Row="2">
+                <StackPanel x:Name="ItemPanel" Orientation="Vertical" HorizontalAlignment="Stretch">
+                    <StackPanel.LayoutTransform>
+                        <ScaleTransform x:Name="ItemScale" CenterX="0" CenterY="0" ScaleX="1" ScaleY="1"/>
+                    </StackPanel.LayoutTransform>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Window>
