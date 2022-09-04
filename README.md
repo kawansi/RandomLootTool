@@ -1,6 +1,7 @@
-# RandomLootTool
-This is a tool for Minecraft 
-The tool can sort and filter blocks mined, creatures killed and items picked up in a more organized fashion, based on the Minecraft statistics.
+# Random Loot Tool
+This is a tool for Minecraft, mainly targeting worlds with loot drops being randomized. It provides an easier way to keep track of what blocks still have not been broken or creatures killed, especially useful if having trouble remembering what has already been broken.
+
+The tool sort and filter blocks mined, creatures killed and items picked up in a more organized fashion, based on the Minecraft statistics.
 
 ## Features
 - Automatic refresh when Minecraft saves
@@ -17,6 +18,11 @@ The tool can sort and filter blocks mined, creatures killed and items picked up 
 - 1.19.2
 
 Previous Minecraft versions (1.12.2+) will work with partial support (icons used will be from 1.19.2 and blocks are listed despite not existing in this version).
+
+## Installation
+No installation is done, unpack the ZIP anywhere and run the .exe file.
+
+It does not save any files, it only read statistics of the save created by Minecraft.
 
 ## Feedback
 Have any feedback or found a bug? Open an [issue](https://github.com/kawansi/RandomLootTool/issues) and I will answer as soon as possible.
